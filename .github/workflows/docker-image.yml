@@ -15,5 +15,5 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build -t ambachiri/github-actions-playground:latest .
-        echo ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} | docker login -u ambachiri --password-sdin
+        echo ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} | docker login -u ambachiri --password-stdin
         docker image push ambachiri/github-actions-playground
