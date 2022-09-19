@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . ambachiri/github-actions-playground:latest
+      run: docker build -t ambachiri/github-actions-playground:latest .
