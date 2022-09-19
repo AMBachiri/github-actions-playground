@@ -13,7 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: >
-            docker build -t ambachiri/github-actions-playground:latest .
-            docker login -u ambachiri -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-            docker image push ambachiri/github-actions-playground
+    - run: docker build -t ambachiri/github-actions-playground:latest .
+    - run: docker login -u ambachiri -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    - run: docker image push ambachiri/github-actions-playground
