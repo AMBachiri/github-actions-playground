@@ -25,5 +25,5 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ambachiri/github-actions-playground:${{ github.GITHUB_SHA::8 }}
+        tags: ambachiri/github-actions-playground:${{ github.GITHUB_RUN_ID }}
 
