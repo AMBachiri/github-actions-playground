@@ -7,5 +7,5 @@ jobs:
     steps:
       - name: Show default variables
         run: |
-          echo $(cut -c 1-7 <<< $GITHUB_SHA) >> $GITHUB_ENV
+          echo "IMAGE_TAG=$(cut -c 1-7 <<< $GITHUB_SHA)" >> $GITHUB_ENV
           env
