@@ -7,6 +7,5 @@ jobs:
     steps:
       - name: Show default variables
         run: |
-          export IMAGE_TAG=$(cut -c 1-8 <<< $GITHUB_SHA)
-          echo $IMAGE_TAG
+          echo $(cut -c 1-7 <<< $GITHUB_SHA) >> $GITHUB_ENV
           env
