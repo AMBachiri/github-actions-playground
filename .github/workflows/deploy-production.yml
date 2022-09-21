@@ -1,0 +1,9 @@
+name: Deploy to poduction
+on:
+  workflow_dispatch:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show default variables
+        run: echo $GITHUB_REF_NAME
