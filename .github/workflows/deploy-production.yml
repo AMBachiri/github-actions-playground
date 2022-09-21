@@ -32,7 +32,7 @@ jobs:
         run: |
           git config user.name GitHub Actions
           git config user.email github-actions@techmyteam.com
-          echo "$IMAGE_TAG" > deployment.yml
+          echo "${{ env.IMAGE_TAG }}" > deployment.yml
           git add .
           git commit -m "Updated Docker Image Tag"
           git push
