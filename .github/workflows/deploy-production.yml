@@ -23,7 +23,7 @@ jobs:
     environment: staging
     steps:
       - name: Checkout manifests repository
-        uses: actions/checkouts@v3
+        uses: actions/checkout@v3
         with:
           repository: ambachiri/manifests
           ref: main
