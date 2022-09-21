@@ -8,4 +8,4 @@ jobs:
       - name: Show default variables
         run: |
           echo "IMAGE_TAG=$(cut -c 1-7 <<< $GITHUB_SHA)" >> $GITHUB_ENV
-          env
+          echo "${{ env.IMAGE_TAG }}"
