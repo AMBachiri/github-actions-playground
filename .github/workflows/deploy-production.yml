@@ -22,6 +22,17 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - name: deploy to staging
+      - name: Checkout manifests repository
+        uses: actions/checkouts@v3
+        with:
+          repository: ambachiri/manifests
+          ref: main
+          token: ${{ secrets.PAT }}
+      - name: Update Image Tag
         run: |
-          echo "Deployed to staging"
+          git config user.name GitHub Actions
+          git config user.email github-actions@techmyteam.com
+          echo "$IMAGE_TAG" > deployment.yml
+          git add .
+          git commit -m "Updated Docker Image Tag"
+          git push
