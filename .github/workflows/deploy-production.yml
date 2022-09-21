@@ -1,8 +1,8 @@
-name: Deploy to poduction
+name: Deploy to staging
 on:
   workflow_dispatch:
 jobs:
-  job1:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Set Docker Image Tag
@@ -18,3 +18,9 @@ jobs:
         with:
           push: true
           tags: ambachiri/github-actions-playground:${{ env.IMAGE_TAG }}
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy to staging
+        run: |
+          echo "Deployed to staging"
