@@ -18,9 +18,12 @@ jobs:
         with:
           push: true
           tags: ambachiri/github-actions-playground:${{ env.IMAGE_TAG }}
+    outputs:
+      image_tag: ${{ env.IMAGE_TAG}}
   deploy:
     runs-on: ubuntu-latest
     environment: staging
+    needs: build
     steps:
       - name: Checkout manifests repository
         uses: actions/checkout@v3
@@ -32,7 +35,7 @@ jobs:
         run: |
           git config user.name GitHub Actions
           git config user.email github-actions@techmyteam.com
-          echo "${{ env.IMAGE_TAG }}" > deployment.yml
+          echo "${{ needs.build.outputs.image_tag }}" > deployment.yml
           git add .
           git commit -m "Updated Docker Image Tag"
           git push
