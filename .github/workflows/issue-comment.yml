@@ -1,0 +1,15 @@
+name: send LGTM reaction
+on:
+  issue_comment:
+    type: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: micnncim/action-lgtm-reaction@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        trigger: '[".*looks good for me.*"]'
+        override: true
