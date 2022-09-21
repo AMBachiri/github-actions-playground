@@ -20,6 +20,7 @@ jobs:
           tags: ambachiri/github-actions-playground:${{ env.IMAGE_TAG }}
   deploy:
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - name: deploy to staging
         run: |
