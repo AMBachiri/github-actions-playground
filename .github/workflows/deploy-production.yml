@@ -7,5 +7,5 @@ jobs:
     steps:
       - name: Show default variables
         run: |
-          IMAGE_TAG=$(cut -c 1-8 $GITHUB_SHA)
+          IMAGE_TAG=$(cut -c 1-8 <<< $GITHUB_SHA)
           echo $IMAGE_TAG
