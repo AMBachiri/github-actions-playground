@@ -9,4 +9,5 @@ jobs:
         run: |
           echo "IMAGE_TAG=$(cut -c 1-7 <<< $GITHUB_SHA)" >> $GITHUB_ENV
       - name: Get Docker Image Tag
+        run: |
           echo "${{ env.IMAGE_TAG }}
