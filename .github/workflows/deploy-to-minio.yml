@@ -11,7 +11,8 @@ jobs:
       - name: Get Respository Name
         run: |
             echo "REPOSITORY_NAME=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
-      - uses: jakejarvis/s3-sync-action@v0.5.1
+      - name: Sync with Minio Bucket
+        uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --acl public-read --follow-symlinks --delete --exclude '.git/*' --exclude '.github/*'
         env:
@@ -22,3 +23,11 @@ jobs:
           AWS_S3_ENDPOINT: https://minio.techmyteam.net
           SOURCE_DIR: './'
           DEST_DIR: ${{ env.REPOSITORY_NAME }}
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.22.0
+        with:
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
