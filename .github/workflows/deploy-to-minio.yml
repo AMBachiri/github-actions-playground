@@ -36,7 +36,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Deployed to staging. Check: https://minio.techmyteam.net/frontend/${{ env.REPOSITORY_NAME }}/"
+                    "text": "Deployed to staging. Check: https://minio.techmyteam.net/frontend/${{ env.REPOSITORY_NAME }}/index.html"
                   }
                 }
               ]
